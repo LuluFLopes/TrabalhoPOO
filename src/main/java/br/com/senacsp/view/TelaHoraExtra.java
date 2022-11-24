@@ -6,7 +6,7 @@ package br.com.senacsp.view;
 
 import br.com.senacsp.controller.Controller;
 import br.com.senacsp.model.Funcionario;
-import br.com.senacsp.pattern.builder.Builder;
+import br.com.senacsp.pattern.builder.FuncionarioBuilder;
 import br.com.senacsp.util.Validador;
 
 import java.text.DecimalFormat;
@@ -16,10 +16,10 @@ import java.text.DecimalFormat;
  */
 public class TelaHoraExtra extends javax.swing.JFrame {
 
-    private Builder builder = new Builder();
-    private Controller controller = builder.criaController();
+    private FuncionarioBuilder funcionarioBuilder = new FuncionarioBuilder();
+    private Controller controller = funcionarioBuilder.criaController();
 
-    private Validador validador = builder.criaValidador();
+    private Validador validador = funcionarioBuilder.criaValidador();
     private Funcionario f;
 
     /**
@@ -46,7 +46,7 @@ public class TelaHoraExtra extends javax.swing.JFrame {
         cboCargo = new javax.swing.JComboBox<>();
         txtTotal = new javax.swing.JFormattedTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         txtTitulo.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         txtTitulo.setText("Calculo de Hora Extra");

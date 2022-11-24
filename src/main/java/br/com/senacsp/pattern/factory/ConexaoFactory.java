@@ -9,10 +9,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class ConexaoFactory {
+public class ConexaoFactory implements Factory {
 
     private Connection conexao = null;
 
+    @Override
     public Connection getConexao() {
 
         try {

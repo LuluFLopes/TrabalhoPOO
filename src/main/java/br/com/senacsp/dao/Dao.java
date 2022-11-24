@@ -1,7 +1,7 @@
 package br.com.senacsp.dao;
 
 import br.com.senacsp.model.Funcionario;
-import br.com.senacsp.pattern.builder.Builder;
+import br.com.senacsp.pattern.builder.FuncionarioBuilder;
 import br.com.senacsp.pattern.factory.ConexaoFactory;
 
 import java.sql.*;
@@ -11,7 +11,7 @@ import java.util.List;
 public class Dao {
 
     private ConexaoFactory conexaoFactory = new ConexaoFactory();
-    private Builder builder = new Builder();
+    private FuncionarioBuilder funcionarioBuilder = new FuncionarioBuilder();
     private Connection conexao;
 
     public boolean salvar(Funcionario f) {
@@ -79,7 +79,7 @@ public class Dao {
             ps = conexao.prepareStatement("SELECT * FROM FUNCIONARIOS");
             rs = ps.executeQuery();
             while (rs.next()) {
-                f = builder.criaFuncionario(cargo);
+                f = funcionarioBuilder.criaFuncionario(cargo);
                 f.setId(rs.getInt("id"));
                 f.setNome(rs.getString("nome"));
                 f.setIdade(rs.getInt("idade"));
@@ -123,7 +123,7 @@ public class Dao {
             ps.setString(2, cargo);
             rs = ps.executeQuery();
             while (rs.next()) {
-                f = builder.criaFuncionario(cargo);
+                f = funcionarioBuilder.criaFuncionario(cargo);
                 f.setId(rs.getInt("id"));
                 f.setNome(rs.getString("nome"));
                 f.setIdade(rs.getInt("idade"));
@@ -163,7 +163,7 @@ public class Dao {
 
             while (rs.next()) {
 
-                f = builder.criaFuncionario(cargo);
+                f = funcionarioBuilder.criaFuncionario(cargo);
                 f.setId(rs.getInt("id"));
                 f.setNome(rs.getString("nome"));
                 f.setIdade(rs.getInt("idade"));
@@ -203,7 +203,7 @@ public class Dao {
 
             while (rs.next()) {
 
-                f = builder.criaFuncionario(cargo);
+                f = funcionarioBuilder.criaFuncionario(cargo);
                 f.setId(rs.getInt("id"));
                 f.setNome(rs.getString("nome"));
                 f.setIdade(rs.getInt("idade"));

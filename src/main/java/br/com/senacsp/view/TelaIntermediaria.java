@@ -2,7 +2,7 @@ package br.com.senacsp.view;
 
 import br.com.senacsp.controller.Controller;
 import br.com.senacsp.model.Funcionario;
-import br.com.senacsp.pattern.builder.Builder;
+import br.com.senacsp.pattern.builder.FuncionarioBuilder;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -14,8 +14,8 @@ import java.util.List;
  */
 public class TelaIntermediaria extends javax.swing.JFrame {
 
-    private Builder builder = new Builder();
-    private Controller controller = builder.criaController();
+    private FuncionarioBuilder funcionarioBuilder = new FuncionarioBuilder();
+    private Controller controller = funcionarioBuilder.criaController();
     private Funcionario f;
 
     /**
@@ -23,6 +23,8 @@ public class TelaIntermediaria extends javax.swing.JFrame {
      */
     public TelaIntermediaria() {
         initComponents();
+        cboCargo.setSelectedIndex(4);
+        geraTabela();
         this.setLocationRelativeTo(null);
     }
 
@@ -143,7 +145,7 @@ public class TelaIntermediaria extends javax.swing.JFrame {
 
         Integer indice = tblPesquisar.getSelectedRow();
 
-        if (indice > 0){
+        if (indice >= 0){
             Object obj = tblPesquisar.getValueAt(indice, 0);
             String idSemConversao = (String) obj;
             Integer id = Integer.parseInt(idSemConversao);
@@ -152,6 +154,7 @@ public class TelaIntermediaria extends javax.swing.JFrame {
 
             Alterar alterar = new Alterar(id, cargo);
             alterar.setVisible(true);
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Selecione uma linha!");
         }
@@ -171,7 +174,7 @@ public class TelaIntermediaria extends javax.swing.JFrame {
 
         Integer indice = tblPesquisar.getSelectedRow();
 
-        if (indice > 0) {
+        if (indice >= 0) {
             Object obj = tblPesquisar.getValueAt(indice, 0);
             String idSemConversao = (String) obj;
             Integer id = Integer.parseInt(idSemConversao);

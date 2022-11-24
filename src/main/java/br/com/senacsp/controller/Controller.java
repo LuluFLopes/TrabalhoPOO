@@ -2,17 +2,17 @@ package br.com.senacsp.controller;
 
 import br.com.senacsp.dao.Dao;
 import br.com.senacsp.model.Funcionario;
-import br.com.senacsp.pattern.builder.Builder;
+import br.com.senacsp.pattern.builder.FuncionarioBuilder;
 
 import java.util.List;
 
 public class Controller {
 
-    private Builder builder = new Builder();
-    private Dao dao = builder.criaDao();
+    private FuncionarioBuilder funcionarioBuilder = new FuncionarioBuilder();
+    private Dao dao = funcionarioBuilder.criaDao();
 
     public boolean salvar(String nome, Integer idade, Double salario, String cargo) {
-        Funcionario f = builder.criaFuncionario(cargo);
+        Funcionario f = funcionarioBuilder.criaFuncionario(cargo);
         f.setNome(nome);
         f.setIdade(idade);
         f.setSalario(salario);
@@ -22,7 +22,7 @@ public class Controller {
     }
 
     public boolean atualizar(Integer id, String nome, Integer idade, Double salario, String cargo) {
-        Funcionario f = builder.criaFuncionario(cargo);
+        Funcionario f = funcionarioBuilder.criaFuncionario(cargo);
         f.setId(id);
         f.setNome(nome);
         f.setIdade(idade);

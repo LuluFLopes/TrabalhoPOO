@@ -6,7 +6,7 @@ package br.com.senacsp.view;
 
 import br.com.senacsp.controller.Controller;
 import br.com.senacsp.model.Funcionario;
-import br.com.senacsp.pattern.builder.Builder;
+import br.com.senacsp.pattern.builder.FuncionarioBuilder;
 import br.com.senacsp.util.Validador;
 
 import javax.swing.*;
@@ -17,9 +17,9 @@ import javax.swing.*;
  */
 public class Alterar extends javax.swing.JFrame {
     
-    private Builder builder = new Builder();
-    private Controller controller = builder.criaController();
-    private Validador validador = builder.criaValidador();
+    private FuncionarioBuilder funcionarioBuilder = new FuncionarioBuilder();
+    private Controller controller = funcionarioBuilder.criaController();
+    private Validador validador = funcionarioBuilder.criaValidador();
 
     /**
      * Creates new form Alterar
@@ -40,7 +40,6 @@ public class Alterar extends javax.swing.JFrame {
         txtIdade.setText(String.valueOf(f.getIdade()));
         txtSalario.setText(String.valueOf(f.getSalario()));
         cboCargo.setSelectedItem(f.getCargo());
-        
     }
 
     /**
@@ -174,6 +173,8 @@ public class Alterar extends javax.swing.JFrame {
 
             if (confirmacao) {
                 JOptionPane.showMessageDialog(this, "Cadastro atualizado!");
+                funcionarioBuilder.criaTelaIntermediaria().setVisible(true);
+                this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao atualizar!");
             }
