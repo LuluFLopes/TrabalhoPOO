@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96a64958-2652-4d55-8f1c-a34ee6fdaaf5" name="Changes" comment="Inclusão da classe de validação e implementação das validações nas telas." />
+    <list default="true" id="96a64958-2652-4d55-8f1c-a34ee6fdaaf5" name="Changes" comment="Inclusão da classe de validação e implementação das validações nas telas.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/util/Validador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/util/Validador.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,7 +104,8 @@
       <workItem from="1669233995081" duration="285000" />
       <workItem from="1669303002937" duration="2544000" />
       <workItem from="1669305851372" duration="993000" />
-      <workItem from="1669306913453" duration="762000" />
+      <workItem from="1669306913453" duration="885000" />
+      <workItem from="1669314097372" duration="400000" />
     </task>
     <task id="LOCAL-00001" summary="Projeto praticamente finalizado, faltando alguns toques finais para terminar.">
       <created>1669227778721</created>
@@ -124,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669307628190</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Inclusão da classe de validação e implementação das validações nas telas.">
+      <created>1669307734828</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669307734829</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

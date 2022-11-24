@@ -2,6 +2,7 @@ package br.com.senacsp.util;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -15,7 +16,7 @@ import javax.swing.JTextField;
 public class Validador {
 
     // Array grava os erros de maneira geral.
-    private ArrayList<String> mensagensErro = new ArrayList<>();
+    private List<String> mensagensErro = new ArrayList<>();
 
     /**
      * Método utilizado para conversão de possíveis números inteiros dentro dos
