@@ -2,13 +2,13 @@ package br.com.senacsp.controller;
 
 import br.com.senacsp.dao.Dao;
 import br.com.senacsp.model.Funcionario;
-import br.com.senacsp.pattern.builder.BuilderFuncionario;
+import br.com.senacsp.pattern.builder.Builder;
 
 import java.util.List;
 
 public class Controller {
 
-    private BuilderFuncionario builder = new BuilderFuncionario();
+    private Builder builder = new Builder();
     private Dao dao = builder.criaDao();
 
     public boolean salvar(String nome, Integer idade, Double salario, String cargo) {
@@ -36,7 +36,7 @@ public class Controller {
         return dao.listarTodos(cargo);
     }
 
-    public List<Funcionario> listarPorNome(String nome, String cargo) {
+    public List<Funcionario> listarPorNomeECargo(String nome, String cargo) {
         return dao.listarPorNomeECargo(nome, cargo);
     }
 

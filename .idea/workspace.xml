@@ -4,18 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96a64958-2652-4d55-8f1c-a34ee6fdaaf5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/controller/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/dao/Dao.java" afterDir="false" />
+    <list default="true" id="96a64958-2652-4d55-8f1c-a34ee6fdaaf5" name="Changes" comment="Projeto praticamente finalizado, faltando alguns toques finais para terminar.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/dao/Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/model/Desenvolvedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/model/Desenvolvedor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/model/Estagiario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/model/Estagiario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/model/Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/model/Funcionario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/model/Gerente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/model/Gerente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/pattern/builder/BuilderFuncionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/pattern/builder/Builder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/pattern/factory/ConexaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/pattern/factory/ConexaoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/Alterar.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/Alterar.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/Alterar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/Alterar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/Cadastrar.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/Cadastrar.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/Cadastrar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/Cadastrar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaHoraExtra.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaHoraExtra.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaHoraExtra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaHoraExtra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaIntermediaria.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaIntermediaria.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaIntermediaria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaIntermediaria.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +66,40 @@
       <recent name="Controller" />
     </key>
   </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="br.com.senacsp.Main" />
+      <module name="TrabalhoPOO" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.com.senacsp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TelaIntermediaria" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="br.com.senacsp.view.TelaIntermediaria" />
+      <module name="TrabalhoPOO" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.com.senacsp.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.TelaIntermediaria" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -72,8 +112,30 @@
       <workItem from="1669206823621" duration="11160000" />
       <workItem from="1669218191810" duration="4816000" />
       <workItem from="1669223075549" duration="258000" />
-      <workItem from="1669226041237" duration="1597000" />
+      <workItem from="1669226041237" duration="1818000" />
+      <workItem from="1669227879123" duration="795000" />
+      <workItem from="1669229781442" duration="1628000" />
+      <workItem from="1669231531059" duration="1535000" />
+      <workItem from="1669233995081" duration="285000" />
+      <workItem from="1669303002937" duration="2544000" />
+      <workItem from="1669305851372" duration="993000" />
+      <workItem from="1669306913453" duration="415000" />
     </task>
+    <task id="LOCAL-00001" summary="Projeto praticamente finalizado, faltando alguns toques finais para terminar.">
+      <created>1669227778721</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669227778721</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Projeto praticamente finalizado, faltando alguns toques finais para terminar.">
+      <created>1669227820988</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669227820988</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -82,6 +144,31 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="8b3399c1-3633-474c-b475-5aaf5d5d8d56">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State />
@@ -89,5 +176,14 @@
         </entry>
       </map>
     </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="8b3399c1-3633-474c-b475-5aaf5d5d8d56" value="TOOL_WINDOW" />
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Projeto praticamente finalizado, faltando alguns toques finais para terminar." />
+    <option name="LAST_COMMIT_MESSAGE" value="Projeto praticamente finalizado, faltando alguns toques finais para terminar." />
   </component>
 </project>

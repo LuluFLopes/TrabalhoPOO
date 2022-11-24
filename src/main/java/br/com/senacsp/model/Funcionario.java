@@ -22,13 +22,13 @@ public class Funcionario {
     public Funcionario() {
     }
 
-    public Double calcularHoraExtra(String cargo, Integer horas) {
+    public Double calcularHoraExtra(Integer horas) {
 
         CalculoExtra instancia = null;
 
-        if (cargo.equalsIgnoreCase("Desenvolvedor")) {
+        if (this.cargo.equalsIgnoreCase("Desenvolvedor")) {
              instancia   = (CalculoExtraDesenvolvedor) new CalculoExtraDesenvolvedor();
-        } else if (cargo.equalsIgnoreCase("Gerente")) {
+        } else if (this.cargo.equalsIgnoreCase("Gerente")) {
              instancia  =  (CalculoExtraGerente) new CalculoExtraGerente();
         } else {
             return 0.0;
@@ -36,10 +36,6 @@ public class Funcionario {
 
         return instancia.calcularHoraExtra(getSalario(), horas);
 
-    }
-
-    public void calculaBonus(){
-        setSalario(getSalario() * 1.2);
     }
 
     public Integer getId() {

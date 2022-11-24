@@ -12,10 +12,5 @@ public class Desenvolvedor extends Funcionario {
 
     public Desenvolvedor() {
     }
-
-    @Override
-    public void calculaBonus() {
-        super.calculaBonus();
-    }
     
 }

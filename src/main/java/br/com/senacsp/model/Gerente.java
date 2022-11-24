@@ -9,9 +9,4 @@ public class Gerente extends Funcionario {
     public Gerente() {
     }
 
-    @Override
-    public void calculaBonus() {
-        setSalario(getSalario() * 1.4);
-    }
-
 }

@@ -8,10 +8,5 @@ public class Estagiario extends Funcionario {
 
     public Estagiario() {
     }
-
-    @Override
-    public void calculaBonus() {
-        setSalario(getSalario() * 1.05);
-    }
     
 }

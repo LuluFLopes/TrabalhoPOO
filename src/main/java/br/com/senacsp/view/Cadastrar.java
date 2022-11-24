@@ -5,7 +5,8 @@
 package br.com.senacsp.view;
 
 import br.com.senacsp.controller.Controller;
-import br.com.senacsp.pattern.builder.BuilderFuncionario;
+import br.com.senacsp.pattern.builder.Builder;
+import br.com.senacsp.util.Validador;
 
 import javax.swing.*;
 
@@ -15,8 +16,9 @@ import javax.swing.*;
 
 public class Cadastrar extends javax.swing.JFrame {
 
-    private BuilderFuncionario builder = new BuilderFuncionario();
+    private Builder builder = new Builder();
     private Controller controller = builder.criaController();
+    private Validador validador = builder.criaValidador();
 
     /**
      * Creates new form Cadastrar
@@ -51,16 +53,21 @@ public class Cadastrar extends javax.swing.JFrame {
 
         txtId.setEditable(false);
         txtId.setBorder(javax.swing.BorderFactory.createTitledBorder("Id Funcionário"));
+        txtId.setName("id funcionário");
 
         txtNome.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome"));
+        txtNome.setName("nome");
 
         txtIdade.setBorder(javax.swing.BorderFactory.createTitledBorder("Idade"));
+        txtIdade.setName("idade");
 
         txtSalario.setBorder(javax.swing.BorderFactory.createTitledBorder("Salário"));
         txtSalario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("####.##"))));
+        txtSalario.setName("salário");
 
         cboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Estagiário", "Desenvolvedor", "Gerente" }));
         cboCargo.setBorder(javax.swing.BorderFactory.createTitledBorder("Cargo"));
+        cboCargo.setName("cargo");
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -133,19 +140,27 @@ public class Cadastrar extends javax.swing.JFrame {
     //Teste de comportamento da controller em conjunto com a funcionalidade REST.
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
-        String nome = txtNome.getText();
-        Integer idade = Integer.parseInt(txtIdade.getText());
-        Double salario = Double.parseDouble(txtSalario.getText());
-        String cargo = cboCargo.getItemAt(cboCargo.getSelectedIndex());
+        validador.validarTexto(txtNome);
+        validador.validarNumero(txtIdade);
+        validador.validarDouble(txtSalario);
+        validador.validarCbo(cboCargo);
 
-        boolean confirmacao = controller.salvar(nome,idade,salario,cargo);
+        if (validador.temErro()) {
+            String nome = txtNome.getText();
+            Integer idade = Integer.parseInt(txtIdade.getText());
+            Double salario = Double.parseDouble(txtSalario.getText());
+            String cargo = cboCargo.getItemAt(cboCargo.getSelectedIndex());
 
-        if (confirmacao) {
-            JOptionPane.showMessageDialog(this, "Cadastro realizado!");
+            boolean confirmacao = controller.salvar(nome,idade,salario,cargo);
+
+            if (confirmacao) {
+                JOptionPane.showMessageDialog(this, "Cadastro realizado!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao cadastrar!");
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Erro ao cadastrar!");
+            validador.exibirMensagensErro();
         }
-
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**

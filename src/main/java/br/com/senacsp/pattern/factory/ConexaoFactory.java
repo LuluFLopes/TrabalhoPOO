@@ -11,9 +11,9 @@ import javax.swing.JOptionPane;
 
 public class ConexaoFactory {
 
-    public Connection getConexao() {
+    private Connection conexao = null;
 
-        Connection conexao = null;
+    public Connection getConexao() {
 
         try {
             // Carregando Driver.

@@ -1,7 +1,7 @@
 package br.com.senacsp.dao;
 
 import br.com.senacsp.model.Funcionario;
-import br.com.senacsp.pattern.builder.BuilderFuncionario;
+import br.com.senacsp.pattern.builder.Builder;
 import br.com.senacsp.pattern.factory.ConexaoFactory;
 
 import java.sql.*;
@@ -11,7 +11,7 @@ import java.util.List;
 public class Dao {
 
     private ConexaoFactory conexaoFactory = new ConexaoFactory();
-    private BuilderFuncionario builder = new BuilderFuncionario();
+    private Builder builder = new Builder();
     private Connection conexao;
 
     public boolean salvar(Funcionario f) {

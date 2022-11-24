@@ -90,6 +90,9 @@
             <TitledBorder title="Horas Trabalhadas"/>
           </Border>
         </Property>
+        <Property name="name" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="&quot;horas&quot;" type="code"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNome">
@@ -98,6 +101,9 @@
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Nome do Funcion&#xe1;rio"/>
           </Border>
+        </Property>
+        <Property name="name" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="&quot;nome&quot;" type="code"/>
         </Property>
       </Properties>
     </Component>
@@ -119,6 +125,9 @@
             <StringItem index="3" value="Gerente"/>
           </StringArray>
         </Property>
+        <Property name="name" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="&quot;cargo&quot;" type="code"/>
+        </Property>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -126,6 +135,7 @@
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="txtTotal">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Valor Total"/>

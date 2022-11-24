@@ -2,7 +2,7 @@ package br.com.senacsp.view;
 
 import br.com.senacsp.controller.Controller;
 import br.com.senacsp.model.Funcionario;
-import br.com.senacsp.pattern.builder.BuilderFuncionario;
+import br.com.senacsp.pattern.builder.Builder;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class TelaIntermediaria extends javax.swing.JFrame {
 
-    private BuilderFuncionario builder = new BuilderFuncionario();
+    private Builder builder = new Builder();
     private Controller controller = builder.criaController();
     private Funcionario f;
 
@@ -70,6 +70,7 @@ public class TelaIntermediaria extends javax.swing.JFrame {
         jScrollPane.setViewportView(tblPesquisar);
 
         txtNome.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome"));
+        txtNome.setName("nome");
         txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNomeKeyTyped(evt);
@@ -84,6 +85,7 @@ public class TelaIntermediaria extends javax.swing.JFrame {
         });
 
         cboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Estagiario", "Desenvolvedor", "Gerente", "Todos" }));
+        cboCargo.setName("cargo");
         cboCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboCargoActionPerformed(evt);
@@ -141,15 +143,18 @@ public class TelaIntermediaria extends javax.swing.JFrame {
 
         Integer indice = tblPesquisar.getSelectedRow();
 
-        Object obj = tblPesquisar.getValueAt(indice, 0);
-        String idSemConversao = (String) obj;
-        Integer id = Integer.parseInt(idSemConversao);
-        obj = tblPesquisar.getValueAt(indice, 2);
-        String cargo = (String) obj;
+        if (indice > 0){
+            Object obj = tblPesquisar.getValueAt(indice, 0);
+            String idSemConversao = (String) obj;
+            Integer id = Integer.parseInt(idSemConversao);
+            obj = tblPesquisar.getValueAt(indice, 2);
+            String cargo = (String) obj;
 
-        Alterar alterar = new Alterar(id, cargo);
-        alterar.setVisible(true);
-
+            Alterar alterar = new Alterar(id, cargo);
+            alterar.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione uma linha!");
+        }
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void txtNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyTyped
@@ -166,13 +171,16 @@ public class TelaIntermediaria extends javax.swing.JFrame {
 
         Integer indice = tblPesquisar.getSelectedRow();
 
-        Object obj = tblPesquisar.getValueAt(indice, 0);
-        String idSemConversao = (String) obj;
-        Integer id = Integer.parseInt(idSemConversao);
-        
-        controller.excluir(id);
-        geraTabela();
+        if (indice > 0) {
+            Object obj = tblPesquisar.getValueAt(indice, 0);
+            String idSemConversao = (String) obj;
+            Integer id = Integer.parseInt(idSemConversao);
 
+            controller.excluir(id);
+            geraTabela();
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione uma linha!");
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void cboCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCargoActionPerformed
@@ -191,7 +199,7 @@ public class TelaIntermediaria extends javax.swing.JFrame {
         if (String.valueOf(cboCargo.getSelectedItem()).equals("Todos")) {
             lista = controller.listarTodos(String.valueOf(cboCargo.getSelectedItem()));
         } else {
-            lista = controller.listarPorNome(String.valueOf(txtNome.getText()), String.valueOf(cboCargo.getSelectedItem()));
+            lista = controller.listarPorNomeECargo(String.valueOf(txtNome.getText()), String.valueOf(cboCargo.getSelectedItem()));
         }
 
         lista.forEach( e -> {

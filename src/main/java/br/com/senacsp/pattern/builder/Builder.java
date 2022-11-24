@@ -6,8 +6,9 @@ import br.com.senacsp.model.Desenvolvedor;
 import br.com.senacsp.model.Estagiario;
 import br.com.senacsp.model.Funcionario;
 import br.com.senacsp.model.Gerente;
+import br.com.senacsp.util.Validador;
 
-public class BuilderFuncionario {
+public class Builder {
 
     private Gerente gerente;
     private Estagiario estagiario;
@@ -34,6 +35,10 @@ public class BuilderFuncionario {
 
     public Dao criaDao(){
         return new Dao();
+    }
+
+    public Validador criaValidador(){
+        return new Validador();
     }
 
 }
