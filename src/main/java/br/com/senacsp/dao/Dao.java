@@ -149,6 +149,45 @@ public class Dao {
         return lista;
     }
 
+    public List<Funcionario> listarPorNome(String nome) {
+
+        conexao = conexaoFactory.getConexao();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Funcionario> lista = new ArrayList<>();
+        Funcionario f = null;
+
+        try {
+            ps = conexao.prepareStatement("SELECT * FROM FUNCIONARIOS WHERE NOME LIKE ?");
+            ps.setString(1, '%' + nome + '%');
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                f = funcionarioBuilder.criaFuncionario("Funcionario");
+                f.setId(rs.getInt("id"));
+                f.setNome(rs.getString("nome"));
+                f.setIdade(rs.getInt("idade"));
+                f.setSalario(rs.getDouble("salario"));
+                f.setCargo(rs.getString("cargo"));
+                lista.add(f);
+            }
+        } catch (SQLException e) {
+            System.out.println("Problema relacionados ao script.");
+        } catch (NullPointerException e) {
+            System.out.println("O objeto está nulo.");
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (conexao != null) {
+                    conexao.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+        return lista;
+    }
+
     public Funcionario pesquisarPorId(Integer id, String cargo) {
 
         conexao = conexaoFactory.getConexao();
@@ -251,5 +290,4 @@ public class Dao {
         }
 
     }
-
 }

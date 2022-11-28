@@ -5,11 +5,16 @@
 package br.com.senacsp.view;
 
 import br.com.senacsp.controller.Controller;
+import br.com.senacsp.model.Desenvolvedor;
+import br.com.senacsp.model.Estagiario;
 import br.com.senacsp.model.Funcionario;
+import br.com.senacsp.model.Gerente;
 import br.com.senacsp.pattern.builder.FuncionarioBuilder;
 import br.com.senacsp.util.Validador;
 
 import java.text.DecimalFormat;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * @author lucme
@@ -28,6 +33,25 @@ public class TelaHoraExtra extends javax.swing.JFrame {
     public TelaHoraExtra() {
         initComponents();
         this.setLocationRelativeTo(null);
+        DefaultTableModel modelo = (DefaultTableModel) tblPesquisar.getModel();
+        List<Funcionario> lista;
+
+        modelo.setRowCount(0);
+
+        if (validador.temErro()) {
+
+            lista = controller.listarTodos("Funcionario");
+            
+            lista.forEach(e -> {
+                modelo.addRow(new String[]{
+                    String.valueOf(e.getId()),
+                    e.getNome(),
+                    e.getCargo()
+                });
+            });
+        } else {
+            validador.exibirMensagensErro();
+        }
     }
 
     /**
@@ -43,8 +67,10 @@ public class TelaHoraExtra extends javax.swing.JFrame {
         txtHoras = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
         btnCalcular = new javax.swing.JButton();
-        cboCargo = new javax.swing.JComboBox<>();
         txtTotal = new javax.swing.JFormattedTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblPesquisar = new javax.swing.JTable();
+        btnPesquisar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -64,71 +90,96 @@ public class TelaHoraExtra extends javax.swing.JFrame {
             }
         });
 
-        cboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Estagiario", "Desenvolvedor", "Gerente" }));
-        cboCargo.setName("cargo");
-
         txtTotal.setEditable(false);
         txtTotal.setBorder(javax.swing.BorderFactory.createTitledBorder("Valor Total"));
         txtTotal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("####.##"))));
+
+        tblPesquisar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Nome", "Cargo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblPesquisar);
+
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtTitulo)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(txtHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(38, 38, 38))
+                                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTitulo))
+                        .addGap(38, 38, 38))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(164, 164, 164)
+                .addGap(39, 39, 39)
+                .addComponent(txtHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(156, 156, 156)
+                .addGap(18, 18, 18)
                 .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(txtTitulo)
-                .addGap(43, 43, 43)
-                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
-        validador.validarTexto(txtNome);
-        validador.validarCbo(cboCargo);
         validador.validarNumero(txtHoras);
 
         if (validador.temErro()) {
-            String nome = String.valueOf(txtNome.getText());
-            String cargo = String.valueOf(cboCargo.getSelectedItem());
+
+            Integer indice = tblPesquisar.getSelectedRow();
+            String nome = String.valueOf(tblPesquisar.getValueAt(indice, 1));
             Integer horas = Integer.parseInt(txtHoras.getText());
 
-            f = controller.pesquisarPorNome(nome, cargo);
+            f = controller.pesquisarPorNome(nome, "Funcionario");
+            
+            typeCast(f, nome);
 
             Double horaExtra = f.calcularHoraExtra(horas);
             DecimalFormat format = new DecimalFormat("#.##");
@@ -139,6 +190,54 @@ public class TelaHoraExtra extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCalcularActionPerformed
 
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        
+        DefaultTableModel modelo = (DefaultTableModel) tblPesquisar.getModel();
+        List<Funcionario> lista;
+
+        modelo.setRowCount(0);
+
+        validador.validarTexto(txtNome);
+
+        if (validador.temErro()) {
+            String nome = String.valueOf(txtNome.getText());
+
+            lista = controller.listarPorNome(nome);
+            
+            lista.forEach(e -> {
+                    String cargo = e.getCargo();
+                    f = funcionarioBuilder.criaFuncionario(cargo);
+                    typeCast(f, cargo);
+            });
+
+            lista.forEach(e -> {
+                modelo.addRow(new String[]{
+                    String.valueOf(e.getId()),
+                    e.getNome(),
+                    e.getCargo()
+                });
+            });
+        } else {
+            validador.exibirMensagensErro();
+        }
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    public void typeCast(Funcionario funcionario, String cargo){
+
+        if (cargo.equalsIgnoreCase("Desenvolvedor")) {
+             Desenvolvedor dev = (Desenvolvedor) funcionario;
+             funcionario = dev;
+        } else if (cargo.equalsIgnoreCase("Gerente")) {
+             Gerente ger = (Gerente) funcionario;
+             funcionario = ger;
+        } else if (cargo.equalsIgnoreCase("Estagiario")) {
+            Estagiario est = (Estagiario) funcionario;
+            funcionario = est;
+        } else {
+            return;
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -176,7 +275,9 @@ public class TelaHoraExtra extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
-    private javax.swing.JComboBox<String> cboCargo;
+    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblPesquisar;
     private javax.swing.JTextField txtHoras;
     private javax.swing.JTextField txtNome;
     private javax.swing.JLabel txtTitulo;

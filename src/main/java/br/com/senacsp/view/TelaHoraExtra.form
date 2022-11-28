@@ -24,32 +24,33 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="38" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="txtTitulo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="txtHoras" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="txtNome" min="-2" pref="250" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="cboCargo" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="btnPesquisar" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="txtNome" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
+                          <Component id="txtTitulo" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+              <Component id="txtHoras" min="-2" pref="120" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnCalcular" min="-2" pref="100" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="txtTotal" min="-2" pref="120" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -58,18 +59,20 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Component id="txtTitulo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-              <Component id="txtNome" min="-2" pref="60" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txtHoras" min="-2" pref="60" max="-2" attributes="0"/>
-                  <Component id="cboCargo" min="-2" pref="60" max="-2" attributes="0"/>
+                  <Component id="txtNome" min="-2" pref="60" max="-2" attributes="0"/>
+                  <Component id="btnPesquisar" min="-2" pref="60" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnCalcular" min="-2" pref="60" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="txtTotal" min="-2" pref="60" max="-2" attributes="0"/>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="131" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="txtHoras" min="-2" pref="60" max="-2" attributes="0"/>
+                  <Component id="btnCalcular" min="-2" pref="60" max="-2" attributes="0"/>
+                  <Component id="txtTotal" min="-2" pref="60" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -115,24 +118,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCalcularActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cboCargo">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Selecione..."/>
-            <StringItem index="1" value="Estagiario"/>
-            <StringItem index="2" value="Desenvolvedor"/>
-            <StringItem index="3" value="Gerente"/>
-          </StringArray>
-        </Property>
-        <Property name="name" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="&quot;cargo&quot;" type="code"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JFormattedTextField" name="txtTotal">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
@@ -145,6 +130,34 @@
           <Format format="####.##" subtype="-1" type="0"/>
         </Property>
       </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="tblPesquisar">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="3" rowCount="0">
+                <Column editable="true" title="Id" type="java.lang.Integer"/>
+                <Column editable="true" title="Nome" type="java.lang.String"/>
+                <Column editable="true" title="Cargo" type="java.lang.String"/>
+              </Table>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="btnPesquisar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pesquisar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

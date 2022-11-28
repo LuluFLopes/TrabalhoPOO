@@ -16,6 +16,7 @@ public class TelaIntermediaria extends javax.swing.JFrame {
 
     private FuncionarioBuilder funcionarioBuilder = new FuncionarioBuilder();
     private Controller controller = funcionarioBuilder.criaController();
+
     private Funcionario f;
 
     /**

@@ -151,9 +151,7 @@ public class Cadastrar extends javax.swing.JFrame {
             Double salario = Double.parseDouble(txtSalario.getText());
             String cargo = cboCargo.getItemAt(cboCargo.getSelectedIndex());
 
-            boolean confirmacao = controller.salvar(nome,idade,salario,cargo);
-
-            if (confirmacao) {
+            if (controller.salvar(nome,idade,salario,cargo)) {
                 JOptionPane.showMessageDialog(this, "Cadastro realizado!");
                 this.dispose();
             } else {

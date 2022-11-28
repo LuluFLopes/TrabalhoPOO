@@ -40,6 +40,11 @@ public class Controller {
         return dao.listarPorNomeECargo(nome, cargo);
     }
 
+    public List<Funcionario> listarPorNome(String nome) {
+        return dao.listarPorNome(nome);
+    }
+
+
     public  Funcionario pesquisarPorId(Integer id, String cargo){
         return dao.pesquisarPorId(id, cargo);
     }
