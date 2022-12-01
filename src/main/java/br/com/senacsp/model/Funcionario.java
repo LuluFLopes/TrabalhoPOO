@@ -4,7 +4,7 @@ import br.com.senacsp.pattern.strategy.CalculoExtra;
 import br.com.senacsp.pattern.strategy.CalculoExtraDesenvolvedor;
 import br.com.senacsp.pattern.strategy.CalculoExtraGerente;
 
-public class Funcionario {
+public abstract class Funcionario {
 
     private Integer id;
     private String nome;

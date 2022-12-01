@@ -114,12 +114,11 @@
     <Component class="javax.swing.JComboBox" name="cboCargo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
+          <StringArray count="4">
             <StringItem index="0" value="Selecione..."/>
             <StringItem index="1" value="Estagiario"/>
             <StringItem index="2" value="Desenvolvedor"/>
             <StringItem index="3" value="Gerente"/>
-            <StringItem index="4" value="Todos"/>
           </StringArray>
         </Property>
         <Property name="name" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">

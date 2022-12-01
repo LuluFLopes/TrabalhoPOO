@@ -6,20 +6,16 @@ package br.com.senacsp.view;
 
 import br.com.senacsp.controller.Controller;
 import br.com.senacsp.model.Funcionario;
-import br.com.senacsp.pattern.builder.FuncionarioBuilder;
+import br.com.senacsp.pattern.builder.InstanciasBuilder;
 import br.com.senacsp.util.Validador;
 
 import javax.swing.*;
 
-/**
- *
- * @author lucme
- */
 public class Alterar extends javax.swing.JFrame {
     
-    private FuncionarioBuilder funcionarioBuilder = new FuncionarioBuilder();
-    private Controller controller = funcionarioBuilder.criaController();
-    private Validador validador = funcionarioBuilder.criaValidador();
+    private InstanciasBuilder instanciasBuilder = new InstanciasBuilder();
+    private Controller controller = instanciasBuilder.criaController();
+    private Validador validador = instanciasBuilder.criaValidador();
 
     /**
      * Creates new form Alterar
@@ -29,12 +25,12 @@ public class Alterar extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
-     public Alterar(Integer id, String cargo) {
+     public Alterar(Integer id) {
         initComponents();
         this.setLocationRelativeTo(null);
 
-        Funcionario f = controller.pesquisarPorId(id,cargo);
-        
+        Funcionario f = controller.pesquisarPorId(id);
+
         txtId.setText(String.valueOf(f.getId()));
         txtNome.setText(f.getNome());
         txtIdade.setText(String.valueOf(f.getIdade()));
@@ -150,7 +146,7 @@ public class Alterar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        funcionarioBuilder.criaTelaIntermediaria().setVisible(true);
+        instanciasBuilder.criaTelaIntermediaria().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
@@ -170,11 +166,9 @@ public class Alterar extends javax.swing.JFrame {
             Double salario = Double.parseDouble(txtSalario.getText());
             String cargo = cboCargo.getItemAt(cboCargo.getSelectedIndex());
 
-            boolean confirmacao = controller.atualizar(id,nome,idade,salario,cargo);
-
-            if (confirmacao) {
+            if (controller.atualizar(id,nome,idade,salario,cargo)) {
                 JOptionPane.showMessageDialog(this, "Cadastro atualizado!");
-                funcionarioBuilder.criaTelaIntermediaria().setVisible(true);
+                instanciasBuilder.criaTelaIntermediaria().setVisible(true);
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao atualizar!");

@@ -5,26 +5,20 @@
 package br.com.senacsp.view;
 
 import br.com.senacsp.controller.Controller;
-import br.com.senacsp.model.Desenvolvedor;
-import br.com.senacsp.model.Estagiario;
 import br.com.senacsp.model.Funcionario;
-import br.com.senacsp.model.Gerente;
-import br.com.senacsp.pattern.builder.FuncionarioBuilder;
+import br.com.senacsp.pattern.builder.InstanciasBuilder;
 import br.com.senacsp.util.Validador;
 
 import java.text.DecimalFormat;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-/**
- * @author lucme
- */
 public class TelaHoraExtra extends javax.swing.JFrame {
 
-    private FuncionarioBuilder funcionarioBuilder = new FuncionarioBuilder();
-    private Controller controller = funcionarioBuilder.criaController();
+    private InstanciasBuilder instanciasBuilder = new InstanciasBuilder();
+    private Controller controller = instanciasBuilder.criaController();
 
-    private Validador validador = funcionarioBuilder.criaValidador();
+    private Validador validador = instanciasBuilder.criaValidador();
     private Funcionario f;
 
     /**
@@ -38,9 +32,7 @@ public class TelaHoraExtra extends javax.swing.JFrame {
 
         modelo.setRowCount(0);
 
-        if (validador.temErro()) {
-
-            lista = controller.listarTodos("Funcionario");
+            lista = controller.listarTodos();
             
             lista.forEach(e -> {
                 modelo.addRow(new String[]{
@@ -49,9 +41,6 @@ public class TelaHoraExtra extends javax.swing.JFrame {
                     e.getCargo()
                 });
             });
-        } else {
-            validador.exibirMensagensErro();
-        }
     }
 
     /**
@@ -177,9 +166,7 @@ public class TelaHoraExtra extends javax.swing.JFrame {
             String nome = String.valueOf(tblPesquisar.getValueAt(indice, 1));
             Integer horas = Integer.parseInt(txtHoras.getText());
 
-            f = controller.pesquisarPorNome(nome, "Funcionario");
-            
-            typeCast(f, nome);
+            f = controller.pesquisarPorNome(nome);
 
             Double horaExtra = f.calcularHoraExtra(horas);
             DecimalFormat format = new DecimalFormat("#.##");
@@ -203,12 +190,6 @@ public class TelaHoraExtra extends javax.swing.JFrame {
             String nome = String.valueOf(txtNome.getText());
 
             lista = controller.listarPorNome(nome);
-            
-            lista.forEach(e -> {
-                    String cargo = e.getCargo();
-                    f = funcionarioBuilder.criaFuncionario(cargo);
-                    typeCast(f, cargo);
-            });
 
             lista.forEach(e -> {
                 modelo.addRow(new String[]{
@@ -221,22 +202,6 @@ public class TelaHoraExtra extends javax.swing.JFrame {
             validador.exibirMensagensErro();
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
-
-    public void typeCast(Funcionario funcionario, String cargo){
-
-        if (cargo.equalsIgnoreCase("Desenvolvedor")) {
-             Desenvolvedor dev = (Desenvolvedor) funcionario;
-             funcionario = dev;
-        } else if (cargo.equalsIgnoreCase("Gerente")) {
-             Gerente ger = (Gerente) funcionario;
-             funcionario = ger;
-        } else if (cargo.equalsIgnoreCase("Estagiario")) {
-            Estagiario est = (Estagiario) funcionario;
-            funcionario = est;
-        } else {
-            return;
-        }
-    }
     
     /**
      * @param args the command line arguments

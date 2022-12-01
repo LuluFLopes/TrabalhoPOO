@@ -7,12 +7,6 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-/**
- * Classe utilizada para validação dos dados nos campos
- *
- * @author lucme
- *
- */
 public class Validador {
 
     // Array grava os erros de maneira geral.

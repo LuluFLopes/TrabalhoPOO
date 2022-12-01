@@ -4,13 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96a64958-2652-4d55-8f1c-a34ee6fdaaf5" name="Changes" comment="Verão Final do Projeto.(v1.2)">
+    <list default="true" id="96a64958-2652-4d55-8f1c-a34ee6fdaaf5" name="Changes" comment="Versão Final do Projeto.(v1.3)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/dao/Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/model/Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/model/Funcionario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/pattern/builder/Builder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/pattern/builder/Builder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/pattern/builder/FuncionarioBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/pattern/builder/InstanciasBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/util/Validador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/util/Validador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/Alterar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/Alterar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/Cadastrar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/Cadastrar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaHoraExtra.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaHoraExtra.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaHoraExtra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaHoraExtra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaInicial.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaInicial.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaInicial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaInicial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaIntermediaria.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaIntermediaria.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaIntermediaria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/senacsp/view/TelaIntermediaria.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +123,14 @@
       <workItem from="1669500570702" duration="3216000" />
       <workItem from="1669586089648" duration="4376000" />
       <workItem from="1669591513231" duration="5000" />
-      <workItem from="1669593359641" duration="2429000" />
+      <workItem from="1669593359641" duration="2611000" />
+      <workItem from="1669611677272" duration="803000" />
+      <workItem from="1669776168582" duration="20000" />
+      <workItem from="1669858033907" duration="5458000" />
+      <workItem from="1669892510861" duration="8652000" />
+      <workItem from="1669901252979" duration="730000" />
+      <workItem from="1669902982738" duration="26000" />
+      <workItem from="1669903125430" duration="327000" />
     </task>
     <task id="LOCAL-00001" summary="Projeto praticamente finalizado, faltando alguns toques finais para terminar.">
       <created>1669227778721</created>
@@ -174,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669318251725</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Verão Final do Projeto.(v1.3)">
+      <created>1669595995893</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1669595995893</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,6 +248,7 @@
     <MESSAGE value="Verão Final do Projeto." />
     <MESSAGE value="Verão Final do Projeto.(v1.1)" />
     <MESSAGE value="Verão Final do Projeto.(v1.2)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Verão Final do Projeto.(v1.2)" />
+    <MESSAGE value="Verão Final do Projeto.(v1.3)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Verão Final do Projeto.(v1.3)" />
   </component>
 </project>

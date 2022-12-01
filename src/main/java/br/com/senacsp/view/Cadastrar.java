@@ -5,20 +5,16 @@
 package br.com.senacsp.view;
 
 import br.com.senacsp.controller.Controller;
-import br.com.senacsp.pattern.builder.FuncionarioBuilder;
+import br.com.senacsp.pattern.builder.InstanciasBuilder;
 import br.com.senacsp.util.Validador;
 
 import javax.swing.*;
 
-/**
- * @author lucme
- */
-
 public class Cadastrar extends javax.swing.JFrame {
 
-    private FuncionarioBuilder funcionarioBuilder = new FuncionarioBuilder();
-    private Controller controller = funcionarioBuilder.criaController();
-    private Validador validador = funcionarioBuilder.criaValidador();
+    private InstanciasBuilder instanciasBuilder = new InstanciasBuilder();
+    private Controller controller = instanciasBuilder.criaController();
+    private Validador validador = instanciasBuilder.criaValidador();
 
     /**
      * Creates new form Cadastrar

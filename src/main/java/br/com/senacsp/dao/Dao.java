@@ -1,7 +1,7 @@
 package br.com.senacsp.dao;
 
 import br.com.senacsp.model.Funcionario;
-import br.com.senacsp.pattern.builder.FuncionarioBuilder;
+import br.com.senacsp.pattern.builder.InstanciasBuilder;
 import br.com.senacsp.pattern.factory.ConexaoFactory;
 
 import java.sql.*;
@@ -11,12 +11,13 @@ import java.util.List;
 public class Dao {
 
     private ConexaoFactory conexaoFactory = new ConexaoFactory();
-    private FuncionarioBuilder funcionarioBuilder = new FuncionarioBuilder();
+    private InstanciasBuilder instanciasBuilder = new InstanciasBuilder();
     private Connection conexao;
 
     public boolean salvar(Funcionario f) {
 
         conexao = conexaoFactory.getConexao();
+
         try {
             PreparedStatement ps = conexao.prepareStatement("INSERT INTO FUNCIONARIOS (NOME,IDADE,SALARIO,CARGO) VALUES (?,?,?,?)");
 
@@ -67,7 +68,7 @@ public class Dao {
 
     }
 
-    public List<Funcionario> listarTodos(String cargo) {
+    public List<Funcionario> listarTodos() {
 
         conexao = conexaoFactory.getConexao();
         PreparedStatement ps = null;
@@ -79,7 +80,7 @@ public class Dao {
             ps = conexao.prepareStatement("SELECT * FROM FUNCIONARIOS");
             rs = ps.executeQuery();
             while (rs.next()) {
-                f = funcionarioBuilder.criaFuncionario(cargo);
+                f = instanciasBuilder.criaTipo(rs.getString("cargo"));
                 f.setId(rs.getInt("id"));
                 f.setNome(rs.getString("nome"));
                 f.setIdade(rs.getInt("idade"));
@@ -107,46 +108,6 @@ public class Dao {
 
         return lista;
 
-    }
-
-    public List<Funcionario> listarPorNomeECargo(String nome, String cargo) {
-
-        conexao = conexaoFactory.getConexao();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        List<Funcionario> lista = new ArrayList<>();
-        Funcionario f = null;
-
-        try {
-            ps = conexao.prepareStatement("SELECT * FROM FUNCIONARIOS WHERE NOME LIKE ? AND CARGO = ?");
-            ps.setString(1, '%' + nome + '%');
-            ps.setString(2, cargo);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                f = funcionarioBuilder.criaFuncionario(cargo);
-                f.setId(rs.getInt("id"));
-                f.setNome(rs.getString("nome"));
-                f.setIdade(rs.getInt("idade"));
-                f.setSalario(rs.getDouble("salario"));
-                f.setCargo(rs.getString("cargo"));
-                lista.add(f);
-            }
-        } catch (SQLException e) {
-            System.out.println("Problema relacionados ao script.");
-        } catch (NullPointerException e) {
-            System.out.println("O objeto está nulo.");
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (conexao != null) {
-                    conexao.close();
-                }
-            } catch (Exception e) {
-            }
-        }
-        return lista;
     }
 
     public List<Funcionario> listarPorNome(String nome) {
@@ -162,7 +123,7 @@ public class Dao {
             ps.setString(1, '%' + nome + '%');
             rs = ps.executeQuery();
             while (rs.next()) {
-                f = funcionarioBuilder.criaFuncionario("Funcionario");
+                f = instanciasBuilder.criaTipo(rs.getString("cargo"));
                 f.setId(rs.getInt("id"));
                 f.setNome(rs.getString("nome"));
                 f.setIdade(rs.getInt("idade"));
@@ -188,7 +149,46 @@ public class Dao {
         return lista;
     }
 
-    public Funcionario pesquisarPorId(Integer id, String cargo) {
+    public List<Funcionario> listarPorCargo(String cargo) {
+
+        conexao = conexaoFactory.getConexao();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Funcionario> lista = new ArrayList<>();
+        Funcionario f = null;
+
+        try {
+            ps = conexao.prepareStatement("SELECT * FROM FUNCIONARIOS WHERE CARGO = ?");
+            ps.setString(1, cargo);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                f = instanciasBuilder.criaTipo(rs.getString("cargo"));
+                f.setId(rs.getInt("id"));
+                f.setNome(rs.getString("nome"));
+                f.setIdade(rs.getInt("idade"));
+                f.setSalario(rs.getDouble("salario"));
+                f.setCargo(rs.getString("cargo"));
+                lista.add(f);
+            }
+        } catch (SQLException e) {
+            System.out.println("Problema relacionados ao script.");
+        } catch (NullPointerException e) {
+            System.out.println("O objeto está nulo.");
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (conexao != null) {
+                    conexao.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+        return lista;
+    }
+
+    public Funcionario pesquisarPorId(Integer id) {
 
         conexao = conexaoFactory.getConexao();
         PreparedStatement ps = null;
@@ -202,7 +202,7 @@ public class Dao {
 
             while (rs.next()) {
 
-                f = funcionarioBuilder.criaFuncionario(cargo);
+                f = instanciasBuilder.criaTipo(rs.getString("cargo"));
                 f.setId(rs.getInt("id"));
                 f.setNome(rs.getString("nome"));
                 f.setIdade(rs.getInt("idade"));
@@ -228,7 +228,7 @@ public class Dao {
         return f;
     }
     
-    public Funcionario pesquisarPorNome(String nome, String cargo) {
+    public Funcionario pesquisarPorNome(String nome) {
 
         conexao = conexaoFactory.getConexao();
         PreparedStatement ps = null;
@@ -242,7 +242,7 @@ public class Dao {
 
             while (rs.next()) {
 
-                f = funcionarioBuilder.criaFuncionario(cargo);
+                f = instanciasBuilder.criaTipo(rs.getString("cargo"));
                 f.setId(rs.getInt("id"));
                 f.setNome(rs.getString("nome"));
                 f.setIdade(rs.getInt("idade"));

@@ -9,19 +9,18 @@ import br.com.senacsp.model.Gerente;
 import br.com.senacsp.util.Validador;
 import br.com.senacsp.view.TelaIntermediaria;
 
-public class FuncionarioBuilder implements Builder {
+public class InstanciasBuilder implements Builder {
 
     @Override
-    public Funcionario criaFuncionario(String cargo) {
-
+    public Funcionario criaTipo(String cargo) {
         if (cargo.equalsIgnoreCase("Gerente")) {
             return new Gerente();
-        } else if (cargo.equalsIgnoreCase("Estagiario")) {
+        } else if (cargo.equalsIgnoreCase("Estagiário")) {
             return new Estagiario();
         } else if (cargo.equalsIgnoreCase("Desenvolvedor")) {
             return new Desenvolvedor();
         } else {
-            return new Funcionario();
+            return null;
         }
     }
     @Override

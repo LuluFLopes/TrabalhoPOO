@@ -2,17 +2,17 @@ package br.com.senacsp.controller;
 
 import br.com.senacsp.dao.Dao;
 import br.com.senacsp.model.Funcionario;
-import br.com.senacsp.pattern.builder.FuncionarioBuilder;
+import br.com.senacsp.pattern.builder.InstanciasBuilder;
 
 import java.util.List;
 
 public class Controller {
 
-    private FuncionarioBuilder funcionarioBuilder = new FuncionarioBuilder();
-    private Dao dao = funcionarioBuilder.criaDao();
+    private InstanciasBuilder instanciasBuilder = new InstanciasBuilder();
+    private Dao dao = instanciasBuilder.criaDao();
 
     public boolean salvar(String nome, Integer idade, Double salario, String cargo) {
-        Funcionario f = funcionarioBuilder.criaFuncionario(cargo);
+        Funcionario f = instanciasBuilder.criaTipo(cargo);
         f.setNome(nome);
         f.setIdade(idade);
         f.setSalario(salario);
@@ -22,7 +22,7 @@ public class Controller {
     }
 
     public boolean atualizar(Integer id, String nome, Integer idade, Double salario, String cargo) {
-        Funcionario f = funcionarioBuilder.criaFuncionario(cargo);
+        Funcionario f = instanciasBuilder.criaTipo(cargo);
         f.setId(id);
         f.setNome(nome);
         f.setIdade(idade);
@@ -32,25 +32,24 @@ public class Controller {
         return dao.atualizar(f);
     }
 
-    public List<Funcionario> listarTodos(String cargo) {
-        return dao.listarTodos(cargo);
-    }
-
-    public List<Funcionario> listarPorNomeECargo(String nome, String cargo) {
-        return dao.listarPorNomeECargo(nome, cargo);
+    public List<Funcionario> listarTodos() {
+        return dao.listarTodos();
     }
 
     public List<Funcionario> listarPorNome(String nome) {
         return dao.listarPorNome(nome);
     }
 
+    public List<Funcionario> listarPorCargo(String cargo) {
+        return dao.listarPorCargo(cargo);
+    }
 
-    public  Funcionario pesquisarPorId(Integer id, String cargo){
-        return dao.pesquisarPorId(id, cargo);
+    public Funcionario pesquisarPorId(Integer id){
+        return dao.pesquisarPorId(id);
     }
     
-    public  Funcionario pesquisarPorNome(String nome, String cargo){
-        return dao.pesquisarPorNome(nome, cargo);
+    public  Funcionario pesquisarPorNome(String nome){
+        return dao.pesquisarPorNome(nome);
     }
 
     public boolean excluir(Integer id) {

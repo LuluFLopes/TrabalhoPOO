@@ -2,29 +2,19 @@ package br.com.senacsp.view;
 
 import br.com.senacsp.controller.Controller;
 import br.com.senacsp.model.Funcionario;
-import br.com.senacsp.pattern.builder.FuncionarioBuilder;
+import br.com.senacsp.pattern.builder.InstanciasBuilder;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
-/**
- *
- * @author lucme
- */
 public class TelaIntermediaria extends javax.swing.JFrame {
 
-    private FuncionarioBuilder funcionarioBuilder = new FuncionarioBuilder();
-    private Controller controller = funcionarioBuilder.criaController();
+    private InstanciasBuilder instanciasBuilder = new InstanciasBuilder();
+    private Controller controller = instanciasBuilder.criaController();
 
-    private Funcionario f;
-
-    /**
-     * Creates new form TelaIntermediario
-     */
     public TelaIntermediaria() {
         initComponents();
-        cboCargo.setSelectedIndex(4);
         geraTabela();
         this.setLocationRelativeTo(null);
     }
@@ -87,7 +77,7 @@ public class TelaIntermediaria extends javax.swing.JFrame {
             }
         });
 
-        cboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Estagiario", "Desenvolvedor", "Gerente", "Todos" }));
+        cboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Estagiario", "Desenvolvedor", "Gerente" }));
         cboCargo.setName("cargo");
         cboCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,10 +140,8 @@ public class TelaIntermediaria extends javax.swing.JFrame {
             Object obj = tblPesquisar.getValueAt(indice, 0);
             String idSemConversao = (String) obj;
             Integer id = Integer.parseInt(idSemConversao);
-            obj = tblPesquisar.getValueAt(indice, 2);
-            String cargo = (String) obj;
 
-            Alterar alterar = new Alterar(id, cargo);
+            Alterar alterar = new Alterar(id);
             alterar.setVisible(true);
             this.dispose();
         } else {
@@ -162,13 +150,7 @@ public class TelaIntermediaria extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void txtNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyTyped
-
-        if (String.valueOf(cboCargo.getSelectedItem()).equals("Selecione...")) {
-            JOptionPane.showMessageDialog(this, "Selecione um cargo.");
-        } else {
             geraTabela();
-        }
-
     }//GEN-LAST:event_txtNomeKeyTyped
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -181,16 +163,15 @@ public class TelaIntermediaria extends javax.swing.JFrame {
             Integer id = Integer.parseInt(idSemConversao);
 
             controller.excluir(id);
-            geraTabela();
+
         } else {
             JOptionPane.showMessageDialog(this, "Selecione uma linha!");
         }
+        geraTabela();
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void cboCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCargoActionPerformed
-        if (String.valueOf(cboCargo.getSelectedItem()).equals("Todos")) {
             geraTabela();
-        }
     }//GEN-LAST:event_cboCargoActionPerformed
 
     public void geraTabela() {
@@ -200,10 +181,12 @@ public class TelaIntermediaria extends javax.swing.JFrame {
 
         modelo.setRowCount(0);
 
-        if (String.valueOf(cboCargo.getSelectedItem()).equals("Todos")) {
-            lista = controller.listarTodos(String.valueOf(cboCargo.getSelectedItem()));
+        if (String.valueOf(txtNome).isEmpty() && cboCargo.getSelectedIndex() == 0) {
+            lista = controller.listarTodos();
+        } else if (cboCargo.getSelectedIndex() > 0) {
+            lista = controller.listarPorCargo(cboCargo.getItemAt(cboCargo.getSelectedIndex()));
         } else {
-            lista = controller.listarPorNomeECargo(String.valueOf(txtNome.getText()), String.valueOf(cboCargo.getSelectedItem()));
+            lista = controller.listarPorNome(String.valueOf(txtNome.getText()));
         }
 
         lista.forEach( e -> {

@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package br.com.senacsp.view;
 
-/**
- *
- * @author lucme
- */
+import java.awt.Color;
+
 public class TelaInicial extends javax.swing.JFrame {
 
     /**
@@ -16,6 +10,7 @@ public class TelaInicial extends javax.swing.JFrame {
     public TelaInicial() {
         initComponents();
         this.setLocationRelativeTo(null);
+        getContentPane().setBackground(Color.black);
     }
 
     /**
@@ -30,6 +25,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        lblIcone = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuFuncionario = new javax.swing.JMenu();
         mnuCadastrar = new javax.swing.JMenuItem();
@@ -44,6 +40,8 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblIcone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconeRedimensionado.jpg"))); // NOI18N
 
         mnuFuncionario.setText("Funcionarios");
         mnuFuncionario.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
@@ -88,11 +86,14 @@ public class TelaInicial extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(lblIcone)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
+            .addComponent(lblIcone, javax.swing.GroupLayout.PREFERRED_SIZE, 487, Short.MAX_VALUE)
         );
 
         pack();
@@ -157,6 +158,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JLabel lblIcone;
     private javax.swing.JMenuItem mnuAltExclu;
     private javax.swing.JMenuItem mnuCadastrar;
     private javax.swing.JMenu mnuFuncionario;

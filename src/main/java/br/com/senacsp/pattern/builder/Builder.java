@@ -8,10 +8,14 @@ import br.com.senacsp.view.TelaIntermediaria;
 
 public interface Builder {
 
-    Funcionario criaFuncionario(String cargo);
+    Funcionario criaTipo(String cargo);
+
     Controller criaController();
+
     Dao criaDao();
+
     Validador criaValidador();
+
     TelaIntermediaria criaTelaIntermediaria();
 
 }
